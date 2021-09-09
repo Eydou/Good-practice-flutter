@@ -30,7 +30,9 @@
     assert( name is! int); 
     ```
 3. ``Debug``
-
+    
+    print slowing your app in production environment
+   
     <span style="color:red">wrong practice</span>
     ```dart
     print('movieTitle: $movieTitle');
