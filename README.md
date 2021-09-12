@@ -150,7 +150,7 @@
 
 9. ``Performance tips``
 
-    Use cascadde
+    Use cascade
 
     <span style="color:red">wrong practice</span>
     ```dart
