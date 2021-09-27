@@ -173,3 +173,15 @@
     ..meaow();
     }
     ```
+10. ``Performance tips``
+
+    User Relative Imports
+
+    <span style="color:red">wrong practice</span>
+    ```dart
+    import 'package:demo/src/utilis/firebase_utilis.dart';
+    ```
+    <span style="color:green">good practice</span>
+    ```dart
+    import '../../../utilis/firebase_utilis.dart';
+    ```
