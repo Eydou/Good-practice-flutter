@@ -185,3 +185,16 @@
     ```dart
     import '../../../utilis/firebase_utilis.dart';
     ```
+11. `Avoid Using the ‘as’ Operator`
+
+    Generally, the ‘as’ operator throws an exception if the cast is not possible, to avoid that you can use the ‘is’ operator.
+
+    <span style="color:red">wrong practice</span>
+    ```dart
+    (item as Vehichle).name = 'BMW';
+    ```
+    <span style="color:green">good practice</span>
+    ```dart
+    if (item is Vehichle)
+    item.name = 'BMW';
+    ```
