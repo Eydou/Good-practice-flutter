@@ -185,6 +185,7 @@
     ```dart
     import '../../../utilis/firebase_utilis.dart';
     ```
+
 11. `Avoid Using the ‘as’ Operator`
 
     Generally, the ‘as’ operator throws an exception if the cast is not possible, to avoid that you can use the ‘is’ operator.
@@ -197,4 +198,87 @@
     ```dart
     if (item is Vehichle)
     item.name = 'BMW';
+    ```
+12. `Use nil instead const Container()`
+
+    It’s just a basic Element Widget that does and costs almost nothing.
+    
+    source : https://pub.dev/packages/nil
+
+    <span style="color:green">good practice</span>
+    ```dart
+    // good
+    text != null ? Text(text) : const Container()
+    // Better
+    text != null ? Text(text) : const SizedBox()
+    // BEST
+    text != null ? Text(text) : nil
+    or
+    if (text != null) Text(text)
+    ```
+13. `Use the ‘if’ Condition Instead of Conditional Expression`
+
+    Several times we need to render a widget based on some condition in Row and Column. If conditional expression return null in any case then we should use it if condition only.
+
+    <span style="color:red">wrong practice</span>
+    ```dart
+    Widget getText(BuildContext context) {
+    return Row(
+    children: [
+    Text(“Hi”),
+    Platform.isAndroid ? Text(“MediumAndroidReader”) : null,
+    Platform.isAndroid ? Text(“MediumAndroidReader”) : SizeBox(),
+    Platform.isAndroid ? Text(“MediumAndroidReader”) : Container(),
+    ]
+    );
+    ```
+    <span style="color:green">good practice</span>
+    ```dart
+    Widget getText(BuildContext context) { 
+    return Row(
+    children: 
+    [
+    Text(“Hi”), if (Platform.isAndroid) Text(“MediumAndroidReader”) 
+    ] 
+    );
+    }
+    ```
+14. `Use the ‘if’ Condition Instead of Conditional Expression`
+
+    You should use raw strings to avoid escaping backlashes and the dollar signs.
+
+    <span style="color:red">wrong practice</span>
+    ```dart
+    var text = ‘This is a demo string \\ and \$ is not raw’;
+    ```
+    <span style="color:green">good practice</span>
+    ```dart
+    var text = r'This is a demo string \\ and \$ is raw';
+    ```
+15. `Use Spread Collections`
+
+    Using spread collections will simplify the code for you when the existing items are already stored in another collection.
+
+        <span style="color:red">wrong practice</span>
+        ```dart
+        var a= [4,5,6];
+        var b= [1,2];
+        a.addAll(b);
+        ```
+        <span style="color:green">good practice</span>
+        ```dart
+        var a= [4,5,6];
+        var b= [1,2,...y];
+        ```
+16. `Don’t Initialize Variables as Null`
+
+    Variables in Dart are automatically initialized to null when its values is not defined so you don’t need to do that.
+
+    <span style="color:red">wrong practice</span>
+    ```dart
+    int maxPage = null;
+    ```
+    <span style="color:green">good practice</span>
+    ```dart
+    int maxPage;
     ```
