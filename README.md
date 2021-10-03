@@ -310,3 +310,26 @@
       itemCount: 10,
     )
     ```
+18. `Need to execute multiple Futures concurrently? Use Future.wait.`
+
+    This is ideal when the futures are independent, and they don't need to execute sequentially.
+
+    <span style="color:red">wrong practice</span>
+    ```dart
+    // Mock API class
+    class CovidAPI {
+      Future<int> getCases() => Future.value(1000);
+      Future<int> getRecovered() => Future.value(100);
+      Future<int> getDeaths() => Future.value(10);
+    }
+    ```
+    <span style="color:green">good practice</span>
+    ```dart
+    final api = CovidAPI();
+    final values = await Future.wait([
+        api.getCases(),
+        api.getRecovered(),
+        api.getDeaths(),
+    ]);
+    print(values); // [1000, 100, 10]
+    ```
