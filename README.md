@@ -282,3 +282,31 @@
     ```dart
     int maxPage;
     ```
+17. `Use underscores for unused function arguments`
+
+    In Flutter we often use widgets that take function arguments. One common example of this is ListView.builder:
+
+    <span style="color:red">wrong practice</span>
+    ```dart
+    class MyListView extends StatelessWidget {
+    @override
+      Widget build(BuildContext context) {
+        return ListView.builder(
+          itemBuilder: (context, index) => ListTile(
+            title: Text('all the same'),
+          ),
+          itemCount: 10,
+        );
+      }
+    }
+    ```
+    In this case, we are not using the (context, index) arguments in the itemBuilder. So we can replace them with underscores instead:
+    <span style="color:green">good practice</span>
+    ```dart
+    ListView.builder(
+      itemBuilder: (_, __) => ListTile(
+        title: Text('all the same'),
+      ),
+      itemCount: 10,
+    )
+    ```
